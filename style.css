@@ -1,0 +1,528 @@
+/* Custom Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
+
+/* Color Variables */
+:root {
+    --black: #1a1a1a;
+    --primary-pink: #e91e63; /* Main Brand Color */
+    --accent-red: #c0392b; /* Darker red for hover/action */
+    --whatsapp-green: #25d366; /* Official WhatsApp Green */
+    --light-gray: #f4f4f4;
+    --light-cream: #fcf8f5; 
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Dancing Script', cursive;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    background-color: white; 
+}
+
+/* --- NAVIGATION BAR STYLING --- */
+.navbar {
+    background-color: var(--black);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px; 
+    width: auto;
+    margin-right: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.brand-name {
+    font-size: 1.8em;
+    font-family: var(--font-secondary); 
+}
+
+.savourelle-pink, .khushi-pink {
+    color: var(--primary-pink);
+    font-weight: 700;
+}
+
+.by-black {
+    color: white;
+    font-size: 0.8em;
+    font-weight: 400;
+    margin: 0 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 600;
+}
+
+.nav-links li a:hover,
+.nav-links li a:focus,
+.nav-links li a:active {
+    color: white;
+    background-color: var(--accent-red);
+}
+
+/* Toggle Button */
+.toggle-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 24px;
+    width: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.toggle-button .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* --- SIDEBAR STYLING FIX --- */
+.sidebar {
+    position: fixed;
+    top: 70px; 
+    right: 0;
+    width: 250px;
+    height: calc(100% - 70px); 
+    background-color: var(--black);
+    padding-top: 20px;
+    /* Default: HIDE the sidebar off-screen */
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    /* FIX: High Z-index */
+    z-index: 1050; 
+    box-shadow: -5px 0 10px rgba(0,0,0,0.5);
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    /* SHOW the sidebar */
+    transform: translateX(0);
+}
+
+.sidebar-link {
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+    background-color: var(--accent-red);
+}
+
+/* Sidebar Overlay (Requires HTML element) */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1040; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+}
+
+.sidebar.active ~ .sidebar-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* --- SECTION LAYOUT STYLING --- */
+.content-container {
+    padding-top: 70px; 
+}
+
+.page-section {
+    /* FIX: Let content define height by default */
+    min-height: auto; 
+    padding: 80px 5%; /* Uniform vertical padding for separation */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+h2 {
+    color: var(--primary-pink);
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--primary-pink);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #f7a4d9; 
+}
+
+/* --- 1. HOME SECTION (Explicitly set min-height 100vh) --- */
+.home-section {
+    background-image: url('image and video/image.jpg.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: white; 
+    position: relative;
+    /* FIX: Set height back for Hero */
+    min-height: 100vh; 
+    padding: 0;
+}
+
+.home-overlay {
+    background-color: rgba(0, 0, 0, 0.45); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 0 5%; 
+}
+
+.home-content {
+    max-width: 800px;
+    text-align: center; 
+}
+
+.home-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 30px;
+    font-family: var(--font-secondary); 
+    line-height: 1.2;
+    color: white; 
+    text-shadow: 2px 2px 4px var(--black);
+}
+
+/* --- 2. ABOUT US SECTION --- */
+.about-section {
+    flex-direction: row;
+    gap: 50px;
+    background-color: white;
+    text-align: left;
+    padding: 100px 5%;
+}
+
+.about-left, .about-right {
+    flex: 1;
+    max-width: 50%;
+}
+
+.khushi-img {
+    width: 100%;
+    height: auto;
+    max-width: 400px; 
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-right p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+
+/* --- 3. MENU SECTION --- */
+.menu-section {
+    background-color: var(--light-gray);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    text-align: left;
+}
+
+.menu-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid var(--primary-pink);
+    transition: transform 0.2s;
+}
+
+.menu-item:hover {
+    transform: translateY(-3px);
+}
+
+.item-name {
+    font-weight: 600;
+    color: var(--black);
+}
+
+.item-price {
+    font-weight: 700;
+    color: var(--accent-red);
+    font-size: 1.1em;
+}
+
+
+/* --- 4. THEME SAVOURELLE SECTION --- */
+.theme-section {
+    background-color: white;
+}
+
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.theme-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.theme-img:hover {
+    transform: scale(1.05);
+}
+
+
+/* --- 5. CONTACT SECTION --- */
+.contact-section {
+    flex-direction: row;
+    gap: 50px;
+    background-color: var(--light-gray);
+    text-align: left;
+    padding: 100px 5%;
+    /* FIX: Align items to flex-start to prevent vertical spill-over */
+    align-items: flex-start; 
+}
+
+.contact-left, .contact-right {
+    flex: 1;
+    max-width: 50%;
+}
+
+.contact-info {
+    font-size: 1.1em;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+}
+
+.contact-info a {
+    color: var(--primary-pink);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-info i {
+    color: var(--accent-red);
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.packaging-video {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.video-caption {
+    margin-top: 10px;
+    font-style: italic;
+    color: #777;
+}
+
+
+/* --- 6. ORDER NOW SECTION STYLES --- */
+.order-section {
+    background-color: var(--light-cream); 
+    padding: 80px 5%; /* Added padding for separation */
+}
+
+.order-form-container { 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.order-form-container label {
+    font-weight: 600;
+    color: var(--black);
+    margin-top: 5px;
+}
+
+.order-form-container input,
+.order-form-container select,
+.order-form-container textarea {
+    padding: 12px;
+    border: 1px solid #ffccd5; 
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+.order-form-container textarea {
+    resize: vertical;
+}
+
+.order-submit-btn {
+    /* FIX: WhatsApp Button Styling */
+    margin-top: 20px;
+    background-color: var(--whatsapp-green); 
+    color: white;
+    font-weight: 700;
+    font-size: 1.1em;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.order-submit-btn:hover {
+    background-color: #128c7e; 
+    transform: translateY(-1px);
+}
+
+.whatsapp-note {
+    text-align: center;
+    margin-top: 15px;
+    font-family: var(--font-primary);
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* --- RESPONSIVENESS (MEDIA QUERIES) --- */
+@media (max-width: 1024px) {
+    /* NAVIGATION */
+    .nav-links { display: none; }
+    .toggle-button { display: flex; }
+
+    /* HOME SECTION */
+    .home-content h1 {
+        font-size: 2.5em;
+    }
+    
+    /* Sections stack vertically */
+    .about-section, .contact-section {
+        flex-direction: column;
+        text-align: center;
+        /* FIX: Reset contact section alignment */
+        align-items: center; 
+    }
+
+    .about-left, .about-right, .contact-left, .contact-right {
+        max-width: 100%;
+    }
+
+    .khushi-img {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .contact-info {
+        margin-bottom: 30px;
+    }
+
+    .theme-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .brand-name {
+        font-size: 1.5em;
+    }
+
+    .home-content h1 {
+        font-size: 2em;
+    }
+    
+    .theme-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-form-container {
+        padding: 20px;
+    }       
+}
